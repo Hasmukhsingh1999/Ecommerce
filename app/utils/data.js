@@ -1,22 +1,21 @@
+import axios from "axios";
 
-
-import axios from 'axios';
-
-export const getDeals = async () => {
+const fetchProductsData = async (productName) => {
   try {
-    const response = await axios.get('http://localhost:8000/products/iphone');
-    return response.data; 
+    const response = await axios.get(
+      `http://localhost:8000/products/${productName}`
+    );
+    return response.data
   } catch (error) {
-    console.log(error);
-    throw error; 
+    console.log(`Error fetching ${productName} deals :`, error);
+    throw error;
   }
 };
+
+export const getDeals = async () => {
+  return fetchProductsData("iphone");
+};
+
 export const getOtherDeals = async () => {
-  try {
-    const response = await axios.get('http://localhost:8000/products/samsung');
-    return response.data; 
-  } catch (error) {
-    console.log(error);
-    throw error; 
-  }
+  return fetchProductsData("samsung");
 };
