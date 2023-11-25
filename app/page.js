@@ -1,26 +1,34 @@
-"use client";
+"use client"
 import React, { useEffect, useState } from "react";
-import { getDeals } from "./utils/data";
+import { getDeals, getOtherDeals } from "./utils/data";
 
-const page = () => {
-  const [deals, setdeals] = useState([]);
+const Page = () => {
+  const [deals, setDeals] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getDeals();
-        setdeals(data);
+        let data;
+        if (selectedProduct === "iphone") {
+          data = await getDeals();
+        } else if (selectedProduct === "samsung") {
+          data = await getOtherDeals();
+        }
+        setDeals(data || []);
         console.log(data);
       } catch (error) {
         console.log(error);
       }
     };
+
     fetchData();
   }, [selectedProduct]);
+
   const handleProductChange = (e) => {
     setSelectedProduct(e.target.value);
   };
+
   return (
     <div>
       <label htmlFor="productDropdown">Select a product:</label>
@@ -29,8 +37,9 @@ const page = () => {
         value={selectedProduct}
         onChange={handleProductChange}
       >
-        <option value="None">None</option>
+        <option value="">None</option>
         <option value="iphone">iPhone</option>
+        <option value="samsung">samsung</option>
       </select>
 
       {deals.length > 0 ? (
@@ -57,4 +66,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
