@@ -5,7 +5,7 @@ const fetchProductsData = async (productName) => {
     const response = await axios.get(
       `http://localhost:8000/products/${productName}`
     );
-    return response.data
+    return response.data;
   } catch (error) {
     console.log(`Error fetching ${productName} deals :`, error);
     throw error;
@@ -18,4 +18,8 @@ export const getDeals = async () => {
 
 export const getOtherDeals = async () => {
   return fetchProductsData("samsung");
+};
+
+export const sonyDeals = async () => {
+  return fetchProductsData("sony");
 };
