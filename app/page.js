@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import { getDeals, getOtherDeals } from "./utils/data";
 
@@ -6,22 +6,26 @@ const Page = () => {
   const [deals, setDeals] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let data;
-        if (selectedProduct === "iphone") {
-          data = await getDeals();
-        } else if (selectedProduct === "samsung") {
-          data = await getOtherDeals();
-        }
-        setDeals(data || []);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const [loading, setLoading] = useState(false);
 
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      let data;
+      if (selectedProduct === "iphone") {
+        data = await getDeals();
+      } else if (selectedProduct === "samsung") {
+        data = await getOtherDeals();
+      }
+      setDeals(data || []);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
     fetchData();
   }, [selectedProduct]);
 
@@ -30,7 +34,7 @@ const Page = () => {
   };
 
   return (
-    <div>
+    <div className="w-full h-full p-[4vw]">
       <label htmlFor="productDropdown">Select a product:</label>
       <select
         id="productDropdown"
@@ -42,7 +46,9 @@ const Page = () => {
         <option value="samsung">samsung</option>
       </select>
 
-      {deals.length > 0 ? (
+      {loading ? (
+        <p>Loading...</p>
+      ) : deals.length > 0 ? (
         <table>
           <thead>
             <tr>
@@ -62,6 +68,7 @@ const Page = () => {
       ) : (
         <p>No deals available for the selected product.</p>
       )}
+      <button className="bg-black p-[1vw] text-white">Download</button>
     </div>
   );
 };
