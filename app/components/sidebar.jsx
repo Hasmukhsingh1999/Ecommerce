@@ -21,7 +21,7 @@ const userProfile = [
 
 const SideBar = () => {
   return (
-    <div className="w-[15vw] h-screen bg-[#191717] text-white flex flex-col justify-between md:flex hidden">
+    <div className="w-[15vw] h-screen bg-[#191717] text-white flex-col justify-between md:flex hidden">
       <div>
         <div className="p-[2vw]">
           <h1 className="text-white font-serif text-sm ">
