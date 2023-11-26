@@ -152,12 +152,13 @@
 // export default Page;
 
 import React from 'react'
-import SideBar from './components/sidebar'
+
+import Home from './components/home'
 
 const page = () => {
   return (
     <div>
-      <SideBar/>
+      <Home/>
     </div>
   )
 }
