@@ -1,8 +1,8 @@
 "use client";
 import DropDown from "./DropDown";
 import { useEffect, useState } from "react";
-import { Table } from "react-bootstrap"; // Importing the Table component from react-bootstrap
-import "bootstrap/dist/css/bootstrap.min.css"; // Importing the Bootstrap CSS
+import { Table } from "react-bootstrap"; 
+import "bootstrap/dist/css/bootstrap.min.css"; 
 
 import { getDeals, getOtherDeals, sonyDeals } from "../utils/data";
 const ProductsDeals = () => {
@@ -49,19 +49,26 @@ const ProductsDeals = () => {
           STAS
         </div>
       </div>
-      <div className="md:py-[1vw] md:px-[2vw]  w-full h-[100vh]">
+      <div className="md:py-[1vw] md:px-[2vw]  w-full h-[100vh] overflow-hidden">
         <div className="h-full w-full bg-white shadow-sm md:rounded-3xl overflow-auto">
-          <div className="w-full flex justify-between md:py-[2vw] md:px-[2vw] sticky top-0 left-0  bg-white border-gray-300 border-b">
-            <span className="text-2xl font-bold font-sans">Amazon Reports</span>
+          <div className="w-full flex justify-between  items-center md:py-[2vw] md:px-[2vw] sticky top-0 left-0  bg-white border-gray-300 border-b py-[5vw] px-[4vw]">
+            <span className="md:text-2xl text-normal font-bold font-sans">
+              Amazon Reports
+            </span>
             <span>
-              <DropDown handleProductChange={handleProductChange} selectedProducts={selectedProducts} />
+              <DropDown
+                handleProductChange={handleProductChange}
+                selectedProducts={selectedProducts}
+              />
             </span>
           </div>
-          <div className="md:py-[1vw] md:px-[2vw] "> 
+          <div className="md:py-[1vw] md:px-[2vw] h-full w-full py-[5vw] px-[4vw]">
             {loading ? (
-              <p>loading...</p>
+              <div className="flex items-center justify-center h-full ">
+                loading...
+              </div>
             ) : deals.length > 0 ? (
-              <Table striped bordered hover responsive>
+              <Table striped bordered hover responsive width={"100%"}>
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -78,13 +85,14 @@ const ProductsDeals = () => {
                 </tbody>
               </Table>
             ) : (
-              <div className="flex items-center justify-center font-semibold">Select from the Dropdown to check Deals.</div>
+              <div className="flex items-center justify-center h-full font-semibold">
+                Select from the Dropdown to check Deals.
+              </div>
             )}
           </div>
         </div>
       </div>
     </div>
-
   );
 };
 
