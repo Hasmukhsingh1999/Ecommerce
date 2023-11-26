@@ -25,7 +25,7 @@ const Hamburger = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <div>
+    <div className="md:hidden visible">
       <div onClick={handleClick}>
         <RxHamburgerMenu size={20} />
       </div>
