@@ -1,10 +1,12 @@
 "use client";
 import DropDown from "./DropDown";
 import { useEffect, useState } from "react";
-import { Table } from "react-bootstrap"; 
-import "bootstrap/dist/css/bootstrap.min.css"; 
+import { Table } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import * as XLSX from "xlsx";
 
 import { getDeals, getOtherDeals, sonyDeals } from "../utils/data";
+
 const ProductsDeals = () => {
   const productList = ["ipone", "sony", "samsung"];
   const [deals, setDeals] = useState([]);
@@ -38,6 +40,17 @@ const ProductsDeals = () => {
 
   const handleProductChange = (e) => {
     setSelectedProduct(e.target.value);
+  };
+
+  const handleClick = () => {
+    const customData = deals.map((deal) => ({
+      Title: deal.title,
+      Price: deal.price,
+    }));
+    const sheet = XLSX.utils.json_to_sheet(customData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, sheet, "Deals");
+    XLSX.writeFile(workbook, "deal.xlsx");
   };
   return (
     <div className="">
@@ -83,6 +96,14 @@ const ProductsDeals = () => {
                     </tr>
                   ))}
                 </tbody>
+                <div className="mt-3 text-center p-2">
+                  <button
+                    className="md:px-[2vw] md:py-[1vw] py-[3vw] px-[5vw] bg-white rounded-full flex  gap-3 shadow-sm font-bold text-sm items-center text-center"
+                    onClick={handleClick}
+                  >
+                    Download Reports
+                  </button>
+                </div>
               </Table>
             ) : (
               <div className="flex items-center justify-center h-full font-semibold">
