@@ -65,13 +65,11 @@ const SideBar = () => {
       </div>
       <div>
         <div className=" py-[1vw] px-[2vw] flex  gap-6 items-center">
+          Logout
           <IoIosLogOut />
-          <p>Logout</p>
         </div>
       </div>
-      <div className="md:hidden visible">
-        h1
-      </div>
+      
     </div>
   );
 };
