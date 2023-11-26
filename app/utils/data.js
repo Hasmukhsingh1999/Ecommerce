@@ -3,7 +3,7 @@ import axios from "axios";
 const fetchProductsData = async (productName) => {
   try {
     const response = await axios.get(
-      `http://localhost:8000/products/${productName}`
+      `https://backend-ecom-fzpl.onrender.com/products${productName}`
     );
     return response.data;
   } catch (error) {
