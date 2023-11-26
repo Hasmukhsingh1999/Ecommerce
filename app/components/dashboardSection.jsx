@@ -1,8 +1,9 @@
 import React from "react";
 import { TbReportSearch } from "react-icons/tb";
 import { CiSaveDown1 } from "react-icons/ci";
-import { RxHamburgerMenu } from "react-icons/rx";
+
 import ProductsDeals from "./ProductsDeals";
+import Hamburger from "./Hamburger";
 
 const DashboardSession = () => {
   return (
@@ -14,10 +15,8 @@ const DashboardSession = () => {
             <TbReportSearch />
           </p>
         </span>
-        <div>
-          <RxHamburgerMenu />
-        </div>
-        <span className="px-[2vw] py-[1vw] bg-white rounded-full flex items-center gap-3 shadow-sm font-bold text-sm">
+       <Hamburger/>
+        <span className="md:px-[2vw] md:py-[1vw] py-[3vw] px-[5vw] bg-white rounded-full flex items-center gap-3 shadow-sm font-bold text-sm">
           Download Reports
           <p>
             <CiSaveDown1 />
