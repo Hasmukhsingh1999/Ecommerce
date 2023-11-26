@@ -25,7 +25,7 @@ const DashboardSession = () => {
         </span>
         <Hamburger />
         <span className="md:px-[2vw] md:py-[1vw] py-[3vw] px-[5vw] bg-white rounded-full flex  gap-3 shadow-sm font-bold text-sm items-center" >
-          Download Reports
+          Add New Analyst
           <CiSaveDown1 />
         </span>
       </div>

@@ -10,7 +10,6 @@ import { SiAdp } from "react-icons/si";
 import { ResponsivePie } from "@nivo/pie";
 import { HiDotsHorizontal } from "react-icons/hi";
 
-
 import { MutatingDots } from "react-loader-spinner";
 const ProductsDeals = () => {
   const productList = ["ipone", "sony", "samsung"];
@@ -109,11 +108,12 @@ const ProductsDeals = () => {
               <HiDotsHorizontal size={30} />
             </div>
             <div className="px-[3vw] py-[2vw] flex flex-col justify-between">
-               <p className="text-5xl font-bold">Goal Compeletion</p>
-               <h4 className="text-sm px-[2vw] py-[.3vw] rounded-full bg-[#F1EAFF] text-end">150%</h4>
+              <p className="text-5xl font-bold">Goal Compeletion</p>
+              <h4 className="text-sm px-[2vw] py-[.3vw] rounded-full bg-[#F1EAFF] text-end">
+                150%
+              </h4>
             </div>
           </div>
-               
         </div>
       </div>
       <div className="md:py-[1vw] md:px-[2vw]  w-full h-[100vh] overflow-hidden">
@@ -132,17 +132,17 @@ const ProductsDeals = () => {
           <div className="md:py-[1vw] md:px-[2vw] h-full w-full py-[5vw] px-[4vw]">
             {loading ? (
               <div className="flex items-center justify-center h-full ">
-<MutatingDots 
-  height="100"
-  width="100"
-  color="#4fa94d"
-  secondaryColor= '#4fa94d'
-  radius='12.5'
-  ariaLabel="mutating-dots-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
- />
+                <MutatingDots
+                  height="100"
+                  width="100"
+                  color="#4fa94d"
+                  secondaryColor="#4fa94d"
+                  radius="12.5"
+                  ariaLabel="mutating-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
               </div>
             ) : deals.length > 0 ? (
               <Table striped bordered hover responsive width={"100%"}>
@@ -162,8 +162,8 @@ const ProductsDeals = () => {
                 </tbody>
                 <div className="mt-3 text-center p-2 w-[100%]  flex items-center justify-center">
                   <button
-                    className="md:px-[2vw] md:py-[1vw] py-[3vw] px-[5vw] bg-white rounded-full flex  gap-3 shadow-sm font-bold text-sm items-center text-center"
-                    onClick={handleClick}
+                    className="md:px-[2vw] md:py-[1vw] py-[3vw] px-[5vw] bg-white rounded-full flex  gap-3 shadow-sm font-bold text-sm items-center text-center cursor-pointer"
+                    onClick={handleClick} 
                   >
                     Download Reports
                   </button>
